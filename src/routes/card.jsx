@@ -1,4 +1,4 @@
-import imageUrl4 from '../images/image4.jpg';
+import imageUrl1 from '../images/image1.jpg';
 import { Link } from 'react-router-dom';
 
 export default function Card({ post }){
