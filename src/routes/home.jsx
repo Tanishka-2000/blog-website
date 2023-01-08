@@ -3,7 +3,7 @@ import Card from './card';
 import { useLoaderData } from 'react-router-dom';
 
 export async function loader(){
-  const response = await fetch('http://localhost:3000/api/posts');
+  const response = await fetch('https://blog-api-vasl.onrender.com/api/posts');
   const data = await response.json();
   return {posts: data.posts};
 }

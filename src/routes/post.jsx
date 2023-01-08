@@ -3,8 +3,8 @@ import imageUrl1 from '../images/image1.jpg';
 import Comment from './comments';
 
 export async function loader({ params }){
-  const response1 = await fetch(`http://localhost:3000/api/posts/${params.postId}`);
-  const response2 = await fetch(`http://localhost:3000/api/posts/${params.postId}/comments`);
+  const response1 = await fetch(`https://blog-api-vasl.onrender.com/api/posts/${params.postId}`);
+  const response2 = await fetch(`https://blog-api-vasl.onrender.com/api/posts/${params.postId}/comments`);
   const data1 = await response1.json();
   const data2 = await response2.json();
   
@@ -16,7 +16,7 @@ export async function action ({request, params}){
   const formData = await request.formData();
   const userData = Object.fromEntries(formData);
     
-  const response = await fetch(`http://localhost:3000/api/posts/${params.postId}/comments`,{
+  const response = await fetch(`https://blog-api-vasl.onrender.com/api/posts/${params.postId}/comments`,{
     method: 'POST',
     headers: {'Content-Type' : 'application/json; charset=UTF-8'},
     body: JSON.stringify(userData)
