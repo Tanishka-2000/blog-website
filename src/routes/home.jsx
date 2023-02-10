@@ -1,11 +1,17 @@
 import girlImageUrl from '../images/girl2.jpg';
 import Card from './card';
-import { useLoaderData } from 'react-router-dom';
+import { Await, defer, useLoaderData } from 'react-router-dom';
+import { Suspense } from 'react';
 
-export async function loader(){
+async function getPosts(){
   const response = await fetch('https://blog-api-vasl.onrender.com/api/posts');
   const data = await response.json();
-  return {posts: data.posts};
+  return data.posts;
+}
+
+export async function loader(){
+  let posts = getPosts();
+  return defer({posts});
 }
 
 export default function Posts(){
@@ -22,10 +28,65 @@ export default function Posts(){
     <main>
       <h1 className='cards-heading'>Posts</h1>
       <div className='cards-container'>
-        {posts.length == 0 ? <p className='no-posts'>There are no posts</p>: 
-        posts.map(post => <Card post={post} key={post._id}/>)}
+        <Suspense fallback={<SkeletonHomePage />}>
+          <Await resolve={posts}>
+            {(resolvedPost) => <>
+              {
+                resolvedPost.length == 0 ? <p className='no-posts'>There are no posts</p>: 
+                resolvedPost.map(post => <Card post={post} key={post._id}/>)
+              }
+            </>}
+        
+          </Await>
+        </Suspense>
       </div>  
     </main>
     </>
+  )
+}
+
+export function SkeletonHomePage(){
+  return(
+    <div className='test-container'>
+      <div className='card'>
+        <div className='skeleton-image'></div>
+        <div className='info'>
+          <p><span className='skeleton-date'></span> <span className='skeleton-category'></span></p>
+          <h2 className='skeleton-title'></h2>
+          <p className='skeleton-about'></p>
+          <p className='skeleton-link'></p>
+        </div>
+      </div>
+
+      <div className='card'>
+        <div className='skeleton-image'></div>
+        <div className='info'>
+          <p><span className='skeleton-date'></span> <span className='skeleton-category'></span></p>
+          <h2 className='skeleton-title'></h2>
+          <p className='skeleton-about'></p>
+          <p className='skeleton-link'></p>
+        </div>
+      </div>
+
+      <div className='card'>
+        <div className='skeleton-image'></div>
+        <div className='info'>
+          <p><span className='skeleton-date'></span> <span className='skeleton-category'></span></p>
+          <h2 className='skeleton-title'></h2>
+          <p className='skeleton-about'></p>
+          <p className='skeleton-link'></p>
+        </div>
+      </div>
+
+      <div className='card'>
+        <div className='skeleton-image'></div>
+        <div className='info'>
+          <p><span className='skeleton-date'></span> <span className='skeleton-category'></span></p>
+          <h2 className='skeleton-title'></h2>
+          <p className='skeleton-about'></p>
+          <p className='skeleton-link'></p>
+        </div>
+      </div>
+    </div>
   )
 }

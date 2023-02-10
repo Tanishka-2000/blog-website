@@ -3,13 +3,13 @@ import { Form} from "react-router-dom";
 
 
 export default function Comments({comments, postId, error}){
-  
+
   const ref = useRef();
   useEffect(() => ref.current.reset());
   
   return(
     <>    
-      <Form method='post' action={`/posts/${postId}`} ref={ref}>
+      <Form className='comment-form' method='post' action={`/posts/${postId}`} ref={ref}>
         <h2>Leave a comment</h2>
 
         <label> 
@@ -38,7 +38,7 @@ export default function Comments({comments, postId, error}){
 
       </Form>
 
-      <h3 className='comment-btn grey'>comments</h3>
+      <h2 className='grey'>Comments</h2>
       {
         comments.length == 0 ? <p>No Comments on this post</p> :
         comments.map(comment => <Comment comment={comment} key={comment._id}/>)
@@ -51,12 +51,14 @@ function Comment({comment}){
   
   return(
     <div className="comment">
-      <p className="name">
+      <div className="name">
         <span className="material-symbols-outlined">account_circle</span>
-        {comment.username}
-      </p>
-      <p className='comment-date'><i>{ comment.timeStamp ? new Date(comment.timeStamp).toDateString() :'Fri Aug 8th 2022'}</i></p>
-      <p>{comment.comment}</p>
+        <div>
+          <span>{comment.username}</span>
+          <span className='comment-date'><i>{ comment.timeStamp ? new Date(comment.timeStamp).toDateString() :'Fri Aug 8th 2022'}</i></span>
+        </div>
+      </div>
+      <p className="msg">{comment.comment}</p>
     </div>
   )
 }
