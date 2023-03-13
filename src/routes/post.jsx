@@ -39,12 +39,12 @@ export default function Post(){
   
   const {post, comments} = useLoaderData();
   const error = useActionData();
-  window.scroll({ top: 0,behavior: 'smooth' });
+  window.scroll({ top: 0, behavior: 'smooth' });
 
   return(
     <div className='post'>
     <Suspense fallback={<SkeletonPost />}>
-{/* error in comment */}
+
       <Await resolve={post}>
        {(resolvedPost) => 
         <>

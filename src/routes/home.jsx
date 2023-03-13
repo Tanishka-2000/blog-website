@@ -48,45 +48,24 @@ export default function Posts(){
 export function SkeletonHomePage(){
   return(
     <div className='test-container'>
-      <div className='card'>
-        <div className='skeleton-image'></div>
-        <div className='info'>
-          <p><span className='skeleton-date'></span> <span className='skeleton-category'></span></p>
-          <h2 className='skeleton-title'></h2>
-          <p className='skeleton-about'></p>
-          <p className='skeleton-link'></p>
-        </div>
-      </div>
-
-      <div className='card'>
-        <div className='skeleton-image'></div>
-        <div className='info'>
-          <p><span className='skeleton-date'></span> <span className='skeleton-category'></span></p>
-          <h2 className='skeleton-title'></h2>
-          <p className='skeleton-about'></p>
-          <p className='skeleton-link'></p>
-        </div>
-      </div>
-
-      <div className='card'>
-        <div className='skeleton-image'></div>
-        <div className='info'>
-          <p><span className='skeleton-date'></span> <span className='skeleton-category'></span></p>
-          <h2 className='skeleton-title'></h2>
-          <p className='skeleton-about'></p>
-          <p className='skeleton-link'></p>
-        </div>
-      </div>
-
-      <div className='card'>
-        <div className='skeleton-image'></div>
-        <div className='info'>
-          <p><span className='skeleton-date'></span> <span className='skeleton-category'></span></p>
-          <h2 className='skeleton-title'></h2>
-          <p className='skeleton-about'></p>
-          <p className='skeleton-link'></p>
-        </div>
-      </div>
+      <SkeletonCard />
+      <SkeletonCard />
+      <SkeletonCard />
+      <SkeletonCard />
     </div>
+  )
+}
+
+function SkeletonCard(){
+  return(
+    <div className='card'>
+        <div className='skeleton-image'></div>
+        <div className='info'>
+          <p><span className='skeleton-date'></span> <span className='skeleton-category'></span></p>
+          <h2 className='skeleton-title'></h2>
+          <p className='skeleton-about'></p>
+          <p className='skeleton-link'></p>
+        </div>
+      </div>
   )
 }
