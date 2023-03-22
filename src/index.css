@@ -15,13 +15,28 @@ body{
 nav{
   font-size: 2rem;
   font-weight: 700;
-  padding: 10px 15%;
+  padding: 10px;
   box-shadow: 0 1px 4px 5px #ddd;
 }
 
 nav a{
+  display: block;
+  max-width: 1300px;
+  margin: 0px auto;
   color: #777;
   text-decoration: none;
+}
+
+@media (width <=1024px) {
+  nav{
+    font-size: 1.5rem;
+  }
+}
+
+@media (width <=768px) {
+  nav{
+    font-size: 1rem;
+  }
 }
 
 .light{
@@ -274,14 +289,27 @@ main .cards-heading{
 
  @media (width < 1350px) {
   .post{
-    margin: 30px 20px;
+    margin: 20px 20px;
     font-size: 1rem;
   }
  }
+
 .postMetaData{
   display: flex;
   justify-content: space-between;
   font-size: 1.3rem;
+}
+
+@media (width < 768px) {
+
+  .post{
+    margin: 10px 20px;
+    font-size: 1rem;
+  }
+
+  .postMetaData{
+    font-size: 1rem;
+  }
 }
 
 .post p{
@@ -290,7 +318,6 @@ main .cards-heading{
 
 .post .createdAt{
   text-align: end;
-  /* font-size: 1.7rem; */
 }
 
 .post img{
@@ -420,11 +447,17 @@ main .cards-heading{
 
 /* ------comment------- */
 
+.comments{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
 .comment{
   font-size: 1.2rem;
   /* border-bottom: 1px solid #555; */
   box-shadow: 2px 2px 3px 3px #ccc;
-  margin-bottom: 50px;
+  /* margin-bottom: 50px; */
   padding: 5px;
   border-radius: 10px;
 }
@@ -460,6 +493,12 @@ main .cards-heading{
   font-size: 1.3rem;
   color: rgba(225, 0, 0, .8);
   font-size: 300;
+}
+
+@media (width < 700px) {
+  .comments{
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ----------skeleton comment----------- */

@@ -41,7 +41,9 @@ export default function Comments({comments, postId, error}){
       <h2 className='grey'>Comments</h2>
       {
         comments.length == 0 ? <p>No Comments on this post</p> :
-        comments.map(comment => <Comment comment={comment} key={comment._id}/>)
+        <div className='comments'>
+         {comments.map(comment => <Comment comment={comment} key={comment._id}/>)}
+        </div>
       }
     </>
   );
